@@ -13,7 +13,17 @@
 // Output: The index in an array of the minimum value between a range [start,stop]
 int findMinimum(int *array, int start, int stop)
 {
-    return 0; // modify to return the index of the min value
+    //set min value to value at start and its index to start
+    int min = array[start];
+    int indexOfMin = start;
+    //loop and if current is smaller than min, set min to current val
+    for (int i = start + 1; i < stop; i++){
+        if (array[i] < min){
+            min = array[i];
+            indexOfMin = i;
+        }
+    }
+    return indexOfMin; // modify to return the index of the min value
 }
 
 
@@ -31,6 +41,14 @@ int findMinimum(int *array, int start, int stop)
 void selectionSortIntegers(int *array, unsigned int size, int print)
 {
     // todo: implement selection sort
+    for (int i = 0; i < size - 1; i++){
+        //find index of min of all values after i 
+        int indexOfMin = findMinimum(array, i, size);
+        //swap min and value at index i
+        int temp = array[indexOfMin];
+        array[indexOfMin] = array[i];
+        array[i] = temp;
+    }
 }
 
 /***  Code for Insertion Sort ***/
