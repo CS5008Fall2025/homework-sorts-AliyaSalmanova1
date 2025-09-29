@@ -4,6 +4,21 @@
 #include <stdlib.h>
 #include "sort_helper.h"
 
+// provided code 
+
+// =============== Helper Functions ===============
+// Name:    compare
+// Desc:    A compare function which returns
+//          a value (positive,negative, or 0)
+//          to show if the result is >,<, or =.
+//
+// Input:   a and b here are generic types,
+//          that is why they are 'void'
+int compare(const void *a, const void *b)
+{
+    return (*(int *)a - *(int *)b);
+}
+
 /*** code for selection sort ****/
 
 // Returns the minimum integer from a range in an array
@@ -51,7 +66,7 @@ void selectionSortIntegers(int *array, unsigned int size, int print)
         int temp = array[indexOfMin];
         array[indexOfMin] = array[i];
         array[i] = temp;
-        printIntArray(array, size);
+        //printIntArray(array, size);
     }
 }
 
@@ -71,8 +86,24 @@ void selectionSortIntegers(int *array, unsigned int size, int print)
 void insertionSortIntegers(int *array, unsigned int size, int print)
 {
     // TODO: Implement insertion sort
- 
-
+    for (int i = 1; i < size; i++){
+        //save current value, as we might override it
+        int placeholder = array[i];
+        //initiate j to i - 1
+        int j = i - 1;
+        //if array[j] is greater than array[i], loop to the left
+        //until we find where to insert i 
+        while (j >= 0 && array[j] > placeholder){
+            //shift right
+            array[j + 1] = array[j];
+            //decrease j
+            j--;
+        } 
+        //insert i once there are no greater values that come before 
+        array[j + 1] = placeholder;
+        //printIntArray(array, size);
+      
+    }
 }
 
 /** Code for Bubble Sort (from Lab -if not compiling, comment out the internals, but leave the function definition) ***/
@@ -91,6 +122,29 @@ void insertionSortIntegers(int *array, unsigned int size, int print)
 void bubbleSortIntegers(int *array, unsigned int size, int print)
 {
     // code generated from lab
+    //loop
+	for (int i = 0; i < size; i ++){
+		//loop in order to perform swaps 
+		//check if there have been any swaps
+		bool noSwaps = true;
+		for (int j = 0; j < size - i - 1; j++){
+			//compare j with j+1, and swap if j is larger value
+			//use compare helper function
+			int result = compare(&array[j], &array[j + 1]);
+			//if result, is more than 0, that means array[j] > array[j + 1]
+			if (result > 0){
+				swap(&array[j], &array[j + 1]);
+				//if there was a swap, set noSwaps to false
+				noSwaps = false;
+			}
+		
+		}
+		//if (print) printIntArray(array, size);
+		//if noSwaps is true, then we got through inner loop without any swaps
+		//therefore array is already sorted
+		if (noSwaps) break;
+		
+	}
 
 }
 
@@ -101,14 +155,53 @@ void bubbleSortIntegers(int *array, unsigned int size, int print)
 // Second subarray is arr[m+1..r]
 void merge(int arr[], int temp[], int l, int m, int r)
 {
+    
     if (arr == NULL || temp == NULL)
     {
         exit(1);
     }
+    
 
     if (l > m || m + 1 > r)
         return;
+    //printf("left: %d m: %d right: %d\n", l, m, r);
 
+
+    int i = l;
+    int j = m + 1;
+    int k = l;
+
+    //place values in order into temp from lowest to highest
+    while (i <= m && j <= r){
+        if (arr[i] <= arr[j]){
+            temp[k] = arr[i] ;
+            i++;
+        }else {
+            temp[k] = arr[j];
+            j++;
+        }
+        k++;
+    }
+
+    //put in remaining values into temp, so if right array is bigger, 
+    //there will be values remaining in right,
+    //or vice versa
+    while (i <= m){
+        temp[k] = arr[i];  
+        i++; 
+        k++;
+    }
+
+    while (j <= r){
+        temp[k] = arr[j];  
+        j++; 
+        k++;
+    }
+
+    //copy values back into arr
+    for (int i = l; i <= r; i++){
+        arr[i] = temp[i];
+    }
 
 }
 
@@ -123,7 +216,14 @@ void merge(int arr[], int temp[], int l, int m, int r)
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void merge_sort(int arr[], int temp[], int l, int r)
 {
-   
+    if (l >= r) return;
+
+    int mid = (r - l) / 2 + l; 
+
+    merge_sort(arr, temp, l, mid);
+    merge_sort(arr, temp, mid + 1 , r);
+    merge(arr, temp, l, mid, r);
+    
 }
 
 // lab build, merge sort
@@ -139,23 +239,11 @@ void mergeSortIntegers(int *array, unsigned int size, int print)
 
     int *temp = (int *)malloc(sizeof(int) * size);
     merge_sort(array, temp, 0, size - 1);
+    //printIntArray(array, size);
     free(temp);
 }
 
-// provided code 
 
-// =============== Helper Functions ===============
-// Name:    compare
-// Desc:    A compare function which returns
-//          a value (positive,negative, or 0)
-//          to show if the result is >,<, or =.
-//
-// Input:   a and b here are generic types,
-//          that is why they are 'void'
-int compare(const void *a, const void *b)
-{
-    return (*(int *)a - *(int *)b);
-}
 
 void quickSortIntegers(int* array, unsigned int size, int print) 
 {   // print is ignored as qsort doesn't use it

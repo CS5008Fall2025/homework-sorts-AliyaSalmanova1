@@ -35,6 +35,7 @@ double sort_and_time(int *array, int size, int type, int print)
     struct timespec begin, end;
     // Get the time before we start
     clock_gettime(CLOCK_MONOTONIC, &begin);
+
     // Perform the sort
     sorts[type](array, size, print);
     // Get the time after we are done
