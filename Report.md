@@ -8,12 +8,12 @@ You are free to write a script to run the program and build your table (then cop
  
 
 ### Table [^note]
-| N | Bubble | Selection | Insertion | Merge | Quick |
-| :-- | :--: | :--: | :--: | :--: | :--: |
-
-
-
-
+| N   | Bubble | Selection | Insertion | Merge | Quick |
+|:10| :0.000002: | :0.000002: | :0.000001: | :0.000002: | :0.000002: |
+| :100 | :0.000046: | :0.000023: | :0.000010: | :0.000011: | :0.000005: |
+| :1000 | :0.003821: | :0.001366: | :0.000724: | :0.000150: | :0.000104: |
+| :10000 | :0.202533: | :0.077554: | :0.045080: | :0.001899: | :0.001391: |
+| :100000 | :24.397708: | :5.048570: | :2.857542: | :0.021396: | :0.008601: |
 
 
 
@@ -24,22 +24,49 @@ Build a line chart using your favorite program. Your X axis will be N increasing
 
 Include the image in your markdown. As a reminder, you save the image in your repo, and use [image markdown].
 
-
+```markdown
+![my graph](instructions/sortAlgorithmsGraph.png)
+```
 
 ### 2. Analysis
 Looking at the graph and the table, what can you say about the various sorts? Which are the fastest? Which are the slowest? Which are the most consistent? Which are the least consistent? Use this space to reflect in your own words your observations.
-
+It looks like merge sort and quick sort are the fastest, while bubble sort is the slowest. Insertion sort is better than selection sort.
 
 ### 3. Big O
 Build another table that presents the best, worst, and average case for Bubble, Selection, Insertion, Merge, and Quick. You are free to use resources for this, but please reference them if you do. 
 
 
+
 #### 3.2 Worst Case
 Provide example of arrays that generate _worst_ case for Bubble, Selection, Insertion, Merge Sorts
+The worst case for Bubble sort would be a reverse sorted array [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]. This is because there would be no early exit.
+During every inner loop there would be swaps. 
+
+In selection sort there isn't as big of a difference between worse case and best case, because even with a sorted array, you have to complete the inner loop
+during every iteration of the outer loop. However, with a reverse sorted array, there would be more swapping the min with the next found min, which wouldn't happen
+with an already sorted array, as the min value of the numbers after i wouldn't change. Therefore, the worse case is still a reverse sorted array,
+but it's not as solid of a worse case. 
+
+In insertion sort, the worst case is a reverse sorted array [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]. 
+With the worst case, the inner loop would have to complete itself every iteration of the outer loop, and the maximum amount of shifting would have to happen. 
+
+With merge sort, there is no worse case. We split each half of the array further into halves, until we become unable to split further.
+Then we merge the sorted halves with each other. No matter what the halves are consisted of, the merge has to take place just the same.
 
 
 #### 3.3 Best Case
 Provide example of arrays that generate _best_ case for Bubble, Selection, Insertion, Merge Sorts 
+The best case for bubble sort would be an already sorted array [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] as there would be no swaps 
+and you would exit out very early. 
+
+The best case for selection sort would also be an already sorted array, though we would still have to traverse through the outer loop and inner loop 
+until the end, as there is no early exit for this algorithm. There isn't a way to know if the rest of the numbers are sorted with this algorithm. 
+
+The best case for insertion sort would be an already sorted array [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] as we would not need to ever perform the inner loop,
+as j would always be less than i, hence resulting in O(n) time complexity and no shifting. 
+
+There isn't a best case for merge sort. No matter what the values are, the algorithm requires to split the halves of the array until you are left with arrays of 
+one element, and then you have to merge by comparing the values of the halves. Hence going down a tree and then upwards again.
 
 
 #### 3.4 Memory Considerations
@@ -71,34 +98,55 @@ $2^{(n-1)}$
 Pair the following terms with the correct function in the table. 
 * Constant, Logarithmic, Linear, Quadratic, Cubic, Exponential, Factorial
 
-| Big $O$     |  Name  |
-| ------      | ------ |
-| $O(n^3)$    |  your answer here |
-| $O(1)$      |   |
-| $O(n)$      |   |
-| $O(\log_2n)$ |   |
-| $O(n^2)$    |   |
-| $O(n!)$     |   |
-| $O(2^n)$    |   |
+| Big $O$     | Name        |
+| ------      |-------------|
+| $O(n^3)$    | Cubic       |
+| $O(1)$      | Constant    |
+| $O(n)$      | Linear      |
+| $O(\log_2n)$ | Logarithmic |
+| $O(n^2)$    | Quadratic   |
+| $O(n!)$     | Factorial   |
+| $O(2^n)$    | Exponential |
 
 
 
 ### 6. Stable vs Unstable
 Look up stability as it refers to sorting. In your own words, describe one sort that is stable and one sort that isn't stable  
+Insertion sort is stable because it only shifts values that are greater than i by one shift to the right. Equal values
+wouldn't get swapped with each other, they could just both shift right, so therefore the order gets preserved.
+
+Selection sort does not adhere to order preservation as values that come earlier in the array than their equals can get swapped with smaller values that come
+later than both of these equal values.
 
 
 ### 6.2 When stability is needed?
 Explain in your own words a case in which you will want a stable algorithm over an unstable. Include an example. 
+Stable algorithms allow equal elements in the data set to have their order preserved. This is useful when the data is already sorted
+by one criteria, and you need to sort them by another criteria also, but have the elements that are equal according to the initial criteria 
+remain in the same order. 
+An example is, say, we are at a refuge camp and children under age 10 can enter their names and ages for volunteers in a charity community to give them prepared meals.
+The youngest children should be fed first, so the data should be sorted by age, but children that are the same age should remain sorted
+by the time when they entered their information. So the same-aged children need to preserve the order in which the data was initially sorted,
+which was by the time/date they entered their information. 
 
 ### 7. Gold Thief
 
-You are planning a heist to steal a rare coin that weighs 1.0001 ounces. The problem is that the rare coin was mixed with a bunch of counter fit coins. You know the counter fit coins only weight 1.0000 ounce each. There are in total 250 coins.  You have a simple balance scale where the coins can be weighed against each other. Hint: don't think about all the coins at once, but how you can break it up into even(ish) piles. 
+You are planning a heist to steal a rare coin that weighs 1.0001 ounces. The problem is that the rare coin was mixed with a bunch of counter fit coins. You know the counter fit coins only weight 1.0000 ounce each. There are in total 250 coins. You have a simple balance scale where the coins can be weighed against each other. Hint: don't think about all the coins at once, but how you can break it up into even(ish) piles. 
 
 #### 7.1 Algorithm
 Describe an algorithm that will help you find the coin. We encourage you to use pseudo-code, but not required.
+I would use merge sort, with a small change. So, I'd split the coin stash in half. The difference is that I'd organize them so that 
+I could make sure the stash is even (in reality I'd have to organize them to see, but with an algo I can just check if the stash is even).
+If it is odd, I'd set one aside and weigh that one separately to make sure it is not our rare coin. 
+Then I'd weigh the halves. If one, stash is bigger, then we know that our rare coin is that stash, hence narrowing down our options. 
+So then I'd look at that stash, and keep doing the same thing recursively, until I find the special coin.
+//split stash in two
+//check if stash is even. If not, set one aside and weigh to see if it's the right coin. 
+//weigh both halves 
 
 #### 7.2 Time Complexity
 What is the average time complexity of your algorithm? 
+The time complexity is O(log n), same as merge sort. 
 
 
 ## Technical Interview Practice Questions
