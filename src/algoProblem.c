@@ -1,3 +1,11 @@
+/*
+ * Name: Aliya Salmanova
+ * Class: cs 5008
+ * Assignment: Lab 3 
+ * Date: Last week of September, 2025
+ */
+
+
 /**
 * Note: The returned array must be malloced, assume caller calls free().
  */

@@ -161,10 +161,9 @@ void merge(int arr[], int temp[], int l, int m, int r)
         exit(1);
     }
     
-
+	//edge case
     if (l > m || m + 1 > r)
         return;
-    //printf("left: %d m: %d right: %d\n", l, m, r);
 
 
     int i = l;
@@ -173,6 +172,8 @@ void merge(int arr[], int temp[], int l, int m, int r)
 
     //place values in order into temp from lowest to highest
     while (i <= m && j <= r){
+		//compare value on left side of array and value on right, 
+		//and place in temp while incrementing necessary pointer and k 
         if (arr[i] <= arr[j]){
             temp[k] = arr[i] ;
             i++;
@@ -183,7 +184,7 @@ void merge(int arr[], int temp[], int l, int m, int r)
         k++;
     }
 
-    //put in remaining values into temp, so if right array is bigger, 
+    //put in remaining values into temp. If right array is bigger, 
     //there will be values remaining in right,
     //or vice versa
     while (i <= m){
@@ -216,12 +217,17 @@ void merge(int arr[], int temp[], int l, int m, int r)
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void merge_sort(int arr[], int temp[], int l, int r)
 {
+	//check if array is empty
     if (l >= r) return;
 
+	//find mid
     int mid = (r - l) / 2 + l; 
 
+	//sort each half
     merge_sort(arr, temp, l, mid);
     merge_sort(arr, temp, mid + 1 , r);
+
+	//merge the sorted halves
     merge(arr, temp, l, mid, r);
     
 }

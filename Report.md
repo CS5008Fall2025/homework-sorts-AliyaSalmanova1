@@ -1,3 +1,6 @@
+Name: Aliya Salmanova
+
+
 # Sort Analysis Data
 
 ## Results Table
@@ -14,6 +17,12 @@ You are free to write a script to run the program and build your table (then cop
 | :1000 | :0.003821: | :0.001366: | :0.000724: | :0.000150: | :0.000104: |
 | :10000 | :0.202533: | :0.077554: | :0.045080: | :0.001899: | :0.001391: |
 | :100000 | :24.397708: | :5.048570: | :2.857542: | :0.021396: | :0.008601: |
+| :1000000 | :-: | :-: | :-: | :0.154911: | :0.100717: |
+| :5000000 | :-: | :-: | :-: | :0.758238: | :0.456034: |
+| :10000000 | :-: | :-: | :-: | :1.587748: | :0.975767: |
+| :50000000 | :-: | :-: | :-: | :8.655033: | :5.185552: |
+| :100000000 | :-: | :-: | :-: | :18.066167: | :10.677068: |
+
 
 
 
@@ -25,7 +34,7 @@ Build a line chart using your favorite program. Your X axis will be N increasing
 Include the image in your markdown. As a reminder, you save the image in your repo, and use [image markdown].
 
 ```markdown
-![my graph](instructions/sortAlgorithmsGraph.png)
+![my graph](instructions/sortAlgorithmsGraph2.png)
 ```
 
 ### 2. Analysis
@@ -71,6 +80,13 @@ one element, and then you have to merge by comparing the values of the halves. H
 
 #### 3.4 Memory Considerations
 Order the various sorts based on which take up the most memory when sorting to the least memory. You may have to research this, and include the mathematical notation. 
+1. Merge Sort - O(n), with additional space for the temporary arrays used when merging
+2. Quick Sort - O(n) in worse case and O(log n) in best case 
+3. Bubble Sort - O(1) as you only need space for the temporary variables
+4. Insertion Sort - O(1) as you only need space for the temporary variables
+5. Selection Sort - O(1) as you only need space for the temporary variables
+
+(The last three have the same memory/auxiliary space complexity.)
 
 ### 4. Growth of Functions
 Give the following values, place them correctly into *six* categories. Use the bullets, and feel free to cut and paste the full LatexMath we used to generate them.  
@@ -86,12 +102,12 @@ $2^n$
 $100n$  
 $2^{(n-1)}$
 #### Categories
-* 
-*
-*
-*
-*
-*
+* $100$ $10000$
+* $100n$ $3n$
+* $n\log_2n$ 
+* $n^2$ $5n^2+5n$
+* $2^n$ $2^{(n-1)}$
+* $n!$
 
 ### 5. Growth of Function Language
 
@@ -123,7 +139,7 @@ later than both of these equal values.
 Explain in your own words a case in which you will want a stable algorithm over an unstable. Include an example. 
 Stable algorithms allow equal elements in the data set to have their order preserved. This is useful when the data is already sorted
 by one criteria, and you need to sort them by another criteria also, but have the elements that are equal according to the initial criteria 
-remain in the same order. 
+remain in the same order. One of the resources I looked up refers to it as 'chain sorting the arrays by multiple fields'. 
 An example is, say, we are at a refuge camp and children under age 10 can enter their names and ages for volunteers in a charity community to give them prepared meals.
 The youngest children should be fed first, so the data should be sorted by age, but children that are the same age should remain sorted
 by the time when they entered their information. So the same-aged children need to preserve the order in which the data was initially sorted,
@@ -146,7 +162,8 @@ So then I'd look at that stash, and keep doing the same thing recursively, until
 
 #### 7.2 Time Complexity
 What is the average time complexity of your algorithm? 
-The time complexity is O(log n), same as merge sort. 
+The time complexity is O(log n). It is similar to merge sort as it is a divide and conquer technique but you don't have to loop to 
+do any kind of merging here. 
 
 
 ## Technical Interview Practice Questions
@@ -154,18 +171,47 @@ The time complexity is O(log n), same as merge sort.
 For both these questions, are you are free to use what you did as the last section on the team activities/answered as a group, or you can use a different question.
 
 1. Select one technical interview question (this module or previous) from the [technical interview list](https://github.com/CS5008-khoury/Resources/blob/main/TechInterviewQuestions.md) below and answer it in a few sentences. You can use any resource you like to answer the question.
+   Quadratic sorts are extremely slow and not scalable. So why do we learn about them and when would we ever use one?
+My own thoughts before research:
+Reason 1. Learning different quadratic sorts helps us learn Big O Notation and understand it, 
+which will in turn help us write our own solutions to problems efficiently, accounting for memory and runtime. 
+Reason 2. It helps us train our critical thinking skills in the context of computer science.
+Reason 3. There probably was a time where merge sort was not thought of yet, so we might still see quadratic sorts used in very old applications.
+Reason 4. There could be certain problems where the more efficient sorts simply could not be possible to use. 
+In some problems, the best case is still quadratic. 
+Reason 5. Perhaps in a case where memory is very important to save and runtime does not matter, we could use a quadratic sort. 
+Reason 6. Coming up with more efficient algorithms I presume has been going on for a long time for computer scientists,
+and thinking of more efficient ways to solve problems is relevant to what we will be doing in the future, therefore these are the basics. 
 
+Answer from source:
+For a very small nearly-sorted array, a quadratic sort would actually be more efficient. 
+Some quadratic sorts are combined with other techniques such as in Timsort. 
+Some of my reasons were written in the source in different words, such as reasons 1, 2, and 6. 
+
+   
 2. Select one coding question (this module or previous) from the [coding practice repository](https://github.com/CS5008-khoury/Resources/blob/main/LeetCodePractice.md) and include a c file with that code with your submission. Make sure to add comments on what you learned, and if you compared your solution with others. 
- 
+ I solved 905. Sort Array By Parity in the Lab on Sunday, Sep 21st. The group members gave me moral support and 
+would help me with bugs, such as the last part where you have to assign numsSize to *returnSize. Group 1 members are Karina Quenta, 
+Siddharth Kakked, Emily Despres, and me. 
 
 ## Deeper Thinking
 Sorting algorithms are still being studied today. They often include a statistical analysis of data before sorting. This next question will require some research, as it isn't included in class content. When you call `sort()` or `sorted()` in Python 3.6+, what sort is it using? 
 
+Apparently Python has used Timsort, but since version 3.11, it uses Powersort instead. 
+
+
 #### Visualize
-Find a graphic / visualization (can be a youtube video) that demonstrates the sort in action. 
+Find a graphic / visualization (can be a youtube video) that demonstrates the sort in action.
+YouTube. shnake_case (11 months ago). What is Timsort and why it's so popular? YouTube. https://www.youtube.com/watch?v=4lKVoX6f0m8
 
 #### Big O
 Give the worst and best case time-complexity, and examples that would generate them. 
+
+The best case time complexity for timsort would be O(n). The example that generates it would be an already sorted array [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+as in tim sort we check which parts of the array are already sorted. In this case, no merging would need to be done. 
+
+The worst case is if there are no sorted chunks of data within the array, such as [10, 1, 5, 2, 8, 3, 9, 4]. 
+The time complexity for this would be O(n log n), because the algorithm would have to be treated the same as merge sort. 
 
 <hr>
 
@@ -173,14 +219,14 @@ Give the worst and best case time-complexity, and examples that would generate t
 Add your references here. A good reference includes an inline citation, such as [1] , and then down in your references section, you include the full details of the reference. Use [ACM Reference format].
 
 1. Reference info, date, etc.
-2. ...
-
-
-
+2. R/learnprogramming on reddit: Why is it important to learn less efficient sorting algorithms? (n.d.). https://www.reddit.com/r/learnprogramming/comments/29hyo9/why_is_it_important_to_learn_less_efficient/
+3. Wikimedia Foundation. (2025, August 1). Timsort. Wikipedia. https://en.wikipedia.org/wiki/Timsort#:~:text=Timsort%20has%20been%20Python’s%20standard,%2C%20in%20Swift%2C%20and%20Rust.
+4. YouTube. shnake_case (11 months ago). What is Timsort and why it's so popular? YouTube. https://www.youtube.com/watch?v=4lKVoX6f0m8
+5. GeeksforGeeks. (2025, July 26). Time complexities of all sorting algorithms. https://www.geeksforgeeks.org/dsa/time-complexities-of-all-sorting-algorithms/?utm_source=chatgpt.com
 
 
 ## Footnotes:
-[^note]: You will want at least 10 different N values, probably more to see the curve for Merge and Quick. If bubble, selection, and insertion start to take more than a  minute, you can say $> 60s$ or - . For example 
+[^note]: You will want at least 10 different N values, probably more to see the curve for Merge and Quick. If bubble, selection, and insertion start to take more than a minute, you can say $> 60s$ or - . For example 
     | N | Bubble | Selection | Insertion | Merge | Quick |
     | :-- | :--: | :--: | :--: | :--: | :--: |
     | 10,000|0.197758|0.070548|0.000070|0.000513|0.000230|
