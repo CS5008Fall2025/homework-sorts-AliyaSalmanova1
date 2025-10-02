@@ -9,6 +9,15 @@
 /**
 * Note: The returned array must be malloced, assume caller calls free().
  */
+
+/*
+Note: When I compared my solutions with other solutions after mine passed, it seems others had 
+a slightly cleaner solution, but this one has good runtime. I learned that it is important 
+to be organized when writing code, as I almost wrote the logic backwards, meaning I almost checked for odds
+when I was supposed to check for evens, vice versa. You have to understand what to check for and what to increment
+and be careful. 
+
+*/
 int* sortArrayByParity(int* nums, int numsSize, int* returnSize) {
     //two pointers, start of the array and finish
     int start = 0;

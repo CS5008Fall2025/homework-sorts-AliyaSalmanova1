@@ -49,6 +49,8 @@ Build another table that presents the best, worst, and average case for Bubble, 
 
 #### 3.2 Worst Case
 Provide example of arrays that generate _worst_ case for Bubble, Selection, Insertion, Merge Sorts
+
+
 The worst case for Bubble sort would be a reverse sorted array [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]. This is because there would be no early exit.
 During every inner loop there would be swaps. 
 
@@ -66,6 +68,8 @@ Then we merge the sorted halves with each other. No matter what the halves are c
 
 #### 3.3 Best Case
 Provide example of arrays that generate _best_ case for Bubble, Selection, Insertion, Merge Sorts 
+
+
 The best case for bubble sort would be an already sorted array [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] as there would be no swaps 
 and you would exit out very early. 
 
@@ -81,6 +85,8 @@ one element, and then you have to merge by comparing the values of the halves. H
 
 #### 3.4 Memory Considerations
 Order the various sorts based on which take up the most memory when sorting to the least memory. You may have to research this, and include the mathematical notation. 
+
+
 1. Merge Sort - O(n), with additional space for the temporary arrays used when merging
 2. Quick Sort - O(n) in worse case and O(log n) in best case 
 3. Bubble Sort - O(1) as you only need space for the temporary variables
@@ -129,6 +135,8 @@ Pair the following terms with the correct function in the table.
 
 ### 6. Stable vs Unstable
 Look up stability as it refers to sorting. In your own words, describe one sort that is stable and one sort that isn't stable  
+
+
 Insertion sort is stable because it only shifts values that are greater than i by one shift to the right. Equal values
 wouldn't get swapped with each other, they could just both shift right, so therefore the order gets preserved.
 
@@ -138,6 +146,8 @@ later than both of these equal values.
 
 ### 6.2 When stability is needed?
 Explain in your own words a case in which you will want a stable algorithm over an unstable. Include an example. 
+
+
 Stable algorithms allow equal elements in the data set to have their order preserved. This is useful when the data is already sorted
 by one criteria, and you need to sort them by another criteria also, but have the elements that are equal according to the initial criteria 
 remain in the same order. One of the resources I looked up refers to it as 'chain sorting the arrays by multiple fields'. 
@@ -152,6 +162,8 @@ You are planning a heist to steal a rare coin that weighs 1.0001 ounces. The pro
 
 #### 7.1 Algorithm
 Describe an algorithm that will help you find the coin. We encourage you to use pseudo-code, but not required.
+
+
 I would use merge sort, with a small change. So, I'd split the coin stash in half. The difference is that I'd organize them so that 
 I could make sure the stash is even (in reality I'd have to organize them to see, but with an algo I can just check if the stash is even).
 If it is odd, I'd set one aside and weigh that one separately to make sure it is not our rare coin. 
@@ -163,6 +175,8 @@ So then I'd look at that stash, and keep doing the same thing recursively, until
 
 #### 7.2 Time Complexity
 What is the average time complexity of your algorithm? 
+
+
 The time complexity is O(log n). It is similar to merge sort as it is a divide and conquer technique but you don't have to loop to 
 do any kind of merging here. 
 
@@ -172,7 +186,10 @@ do any kind of merging here.
 For both these questions, are you are free to use what you did as the last section on the team activities/answered as a group, or you can use a different question.
 
 1. Select one technical interview question (this module or previous) from the [technical interview list](https://github.com/CS5008-khoury/Resources/blob/main/TechInterviewQuestions.md) below and answer it in a few sentences. You can use any resource you like to answer the question.
+
    Quadratic sorts are extremely slow and not scalable. So why do we learn about them and when would we ever use one?
+
+
 My own thoughts before research:
 Reason 1. Learning different quadratic sorts helps us learn Big O Notation and understand it, 
 which will in turn help us write our own solutions to problems efficiently, accounting for memory and runtime. 
@@ -191,6 +208,7 @@ Some of my reasons were written in the source in different words, such as reason
 
    
 2. Select one coding question (this module or previous) from the [coding practice repository](https://github.com/CS5008-khoury/Resources/blob/main/LeetCodePractice.md) and include a c file with that code with your submission. Make sure to add comments on what you learned, and if you compared your solution with others. 
+
  I solved 905. Sort Array By Parity in the Lab on Sunday, Sep 21st. The group members gave me moral support and 
 would help me with bugs, such as the last part where you have to assign numsSize to *returnSize. Group 1 members are Karina Quenta, 
 Siddharth Kakked, Emily Despres, and me. 
