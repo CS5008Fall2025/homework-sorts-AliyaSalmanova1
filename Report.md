@@ -12,6 +12,7 @@ You are free to write a script to run the program and build your table (then cop
 
 ### Table [^note]
 | N   | Bubble | Selection | Insertion | Merge | Quick |
+| :-- | :--: | :--: | :--: | :--: | :--: |
 |10| 0.000002 | 0.000002 | 0.000001 | 0.000002 | 0.000002 |
 | 100 | 0.000046 | 0.000023 | 0.000010 | 0.000011 | 0.000005 |
 | 1000 | 0.003821 | 0.001366 | 0.000724 | 0.000150 | 0.000104 |
