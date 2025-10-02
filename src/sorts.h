@@ -204,6 +204,7 @@ void merge(int arr[], int temp[], int l, int m, int r)
         arr[i] = temp[i];
     }
 
+
 }
 
 // To be built during week 6 lab
@@ -226,9 +227,10 @@ void merge_sort(int arr[], int temp[], int l, int r)
 	//sort each half
     merge_sort(arr, temp, l, mid);
     merge_sort(arr, temp, mid + 1 , r);
-
+	
 	//merge the sorted halves
     merge(arr, temp, l, mid, r);
+
     
 }
 
@@ -245,7 +247,7 @@ void mergeSortIntegers(int *array, unsigned int size, int print)
 
     int *temp = (int *)malloc(sizeof(int) * size);
     merge_sort(array, temp, 0, size - 1);
-    //printIntArray(array, size);
+    if (print) printIntArray(array, size);
     free(temp);
 }
 
