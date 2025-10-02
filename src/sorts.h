@@ -66,7 +66,7 @@ void selectionSortIntegers(int *array, unsigned int size, int print)
         int temp = array[indexOfMin];
         array[indexOfMin] = array[i];
         array[i] = temp;
-        //printIntArray(array, size);
+        if (print) printIntArray(array, size);
     }
 }
 
@@ -101,7 +101,7 @@ void insertionSortIntegers(int *array, unsigned int size, int print)
         } 
         //insert i once there are no greater values that come before 
         array[j + 1] = placeholder;
-        //printIntArray(array, size);
+        if (print) printIntArray(array, size);
       
     }
 }
@@ -139,7 +139,7 @@ void bubbleSortIntegers(int *array, unsigned int size, int print)
 			}
 		
 		}
-		//if (print) printIntArray(array, size);
+		if (print) printIntArray(array, size);
 		//if noSwaps is true, then we got through inner loop without any swaps
 		//therefore array is already sorted
 		if (noSwaps) break;
