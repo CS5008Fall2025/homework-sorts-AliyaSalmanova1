@@ -209,7 +209,7 @@ Some of my reasons were written in the source in different words, such as reason
    
 2. Select one coding question (this module or previous) from the [coding practice repository](https://github.com/CS5008-khoury/Resources/blob/main/LeetCodePractice.md) and include a c file with that code with your submission. Make sure to add comments on what you learned, and if you compared your solution with others. 
 
- I solved 905. Sort Array By Parity in the Lab on Sunday, Sep 21st. The group members gave me moral support and 
+ I solved 905. Sort Array By Parity in the Lab on Sunday, Sep 21st. It is in ../algoProblem.c. The group members gave me moral support and 
 would help me with bugs, such as the last part where you have to assign numsSize to *returnSize. Group 1 members are Karina Quenta, 
 Siddharth Kakked, Emily Despres, and me. 
 
