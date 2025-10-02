@@ -199,7 +199,7 @@ cmake-build-*/
 *.iws
 
 # IntelliJ
-out/
+
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -271,7 +271,7 @@ fabric.properties
 
 # Executables
 *.exe
-*.out
+
 *.app
 *.i*86
 *.x86_64
