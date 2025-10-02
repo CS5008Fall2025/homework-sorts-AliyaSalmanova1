@@ -198,7 +198,7 @@ cmake-build-*/
 # File-based project format
 *.iws
 
-.idea
+
 .idea/indexLayout.xml
 .idea/vcs.xml
 
