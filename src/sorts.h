@@ -59,6 +59,9 @@ int findMinimum(int *array, int start, int stop)
 void selectionSortIntegers(int *array, unsigned int size, int print)
 {
     // todo: implement selection sort
+
+    //edge case
+    if (size == 0 || array == NULL) return;
     //loop through array
     for (int i = 0; i < size - 1; i++){
         //find index of min of all values after i 
@@ -87,6 +90,9 @@ void selectionSortIntegers(int *array, unsigned int size, int print)
 void insertionSortIntegers(int *array, unsigned int size, int print)
 {
     // TODO: Implement insertion sort
+    //edge case
+    if (size == 0 || array == NULL) return;
+
     for (int i = 1; i < size; i++){
         //save current value, as we might override it
         int placeholder = array[i];
@@ -123,6 +129,9 @@ void insertionSortIntegers(int *array, unsigned int size, int print)
 void bubbleSortIntegers(int *array, unsigned int size, int print)
 {
     // code generated from lab
+    //edge case
+    if (size == 0 || array == NULL) return;
+
     //loop
 	for (int i = 0; i < size; i ++){
 		//loop in order to perform swaps 
