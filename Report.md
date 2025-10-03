@@ -35,7 +35,7 @@ Build a line chart using your favorite program. Your X axis will be N increasing
 Include the image in your markdown. As a reminder, you save the image in your repo, and use [image markdown].
 
 ```markdown
-![my graph](instructions/sortAlgorithmsGraph2.png)
+![my graph](./sortAlgorithmsGraph2.png)
 ```
 
 ### 2. Analysis
